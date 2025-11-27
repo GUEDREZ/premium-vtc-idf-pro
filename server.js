@@ -1,7 +1,6 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import fetch from "node-fetch";
 
 dotenv.config();
 
@@ -14,7 +13,7 @@ app.get("/", (req, res) => {
   res.send("✅ Premium VTC IDF Backend is running");
 });
 
-// ✅ FONCTION D’ENVOI TELEGRAM
+// ✅ FONCTION D’ENVOI TELEGRAM (FETCH NATIF NODE 22 ✅)
 async function sendTelegram(message) {
   const url = `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`;
 
