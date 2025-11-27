@@ -304,3 +304,4 @@ document.getElementById("reserver")?.addEventListener("click", async () => {
 
   alert("Votre réservation a été enregistrée.");
 });
+
