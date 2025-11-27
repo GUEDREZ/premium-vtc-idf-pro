@@ -49,6 +49,13 @@ function setAutocomplete(countryCode) {
   if (startEl) new google.maps.places.Autocomplete(startEl, options);
   if (endEl) new google.maps.places.Autocomplete(endEl, options);
 }
+document.getElementById("country").addEventListener("change", function () {
+  const countryCode = this.value;
+
+  if (countryCode) {
+    setAutocomplete(countryCode); // ✅ applique le pays choisi
+  }
+});
 
 
 /* ============================================================
@@ -304,4 +311,5 @@ document.getElementById("reserver")?.addEventListener("click", async () => {
 
   alert("Votre réservation a été enregistrée.");
 });
+
 
