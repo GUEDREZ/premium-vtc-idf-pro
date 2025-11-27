@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Premium VTC Île-de-France – Chauffeur privé professionnel</title>
+
+  <meta name="description"
+        content="Premium VTC IDF – Chauffeur privé professionnel 24/7. Réservation simple, paiement sécurisé PayPal & CB, transferts Paris, Orly, CDG, gares & longues distances.">
+
+  <!-- STYLES -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- ICON -->
+  <link rel="icon" type="image/png" href="assets/img/Mercedes.png" />
+
+  <!-- FONT AWESOME -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- INTL TEL INPUT -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/18.1.1/css/intlTelInput.css" />
+
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="hero-header">
+  <div class="header-overlay">
+    <h1>Premium VTC Île-de-France</h1>
+    <p>
+      Chauffeur privé professionnel – Service haut de gamme 24h/24 & 7j/7.<br>
+      Transferts Paris • Orly • CDG • Gares • Hôtels • Longues distances.
+    </p>
+
+    <div class="cta-buttons">
+      <a href="tel:+33658315900" class="call-button">📞 Appelez-nous</a>
+      <a href="https://wa.me/33766074322" target="_blank" class="whatsapp-button">
+        💬 WhatsApp
+      </a>
+    </div>
+  </div>
+</header>
+
+
+<!-- ================= FORMULAIRE + MAP ================= -->
+<section id="form-map-container">
+
+  <div class="formulaire">
+    <h2>Réserver votre chauffeur</h2>
+
+    <form id="reservation-form">
+
+      <label>Nom complet :</label>
+      <input type="text" id="nom" placeholder="Ex : Marie Dupont" required />
+
+      <label>Email :</label>
+      <input type="email" id="email" placeholder="exemple@gmail.com" required />
+
+      <label>Sélectionner votre pays :</label>
+      <select id="country" required>
+        <option value="">-- Choisir un pays --</option>
+
+        <optgroup label="Europe">
+          <option value="fr">France</option>
+          <option value="be">Belgique</option>
+          <option value="ch">Suisse</option>
+          <option value="de">Allemagne</option>
+          <option value="it">Italie</option>
+          <option value="es">Espagne</option>
+          <option value="pt">Portugal</option>
+          <option value="nl">Pays-Bas</option>
+          <option value="gb">Royaume-Uni</option>
+        </optgroup>
+
+        <optgroup label="Afrique">
+          <option value="dz">Algérie</option>
+          <option value="ma">Maroc</option>
+          <option value="tn">Tunisie</option>
+          <option value="sn">Sénégal</option>
+          <option value="ci">Côte d'Ivoire</option>
+        </optgroup>
+
+        <optgroup label="Golfe & Moyen-Orient">
+          <option value="sa">Arabie Saoudite</option>
+          <option value="ae">Émirats Arabes Unis</option>
+          <option value="qa">Qatar</option>
+          <option value="kw">Koweït</option>
+          <option value="om">Oman</option>
+        </optgroup>
+
+        <optgroup label="Asie">
+          <option value="in">Inde</option>
+          <option value="cn">Chine</option>
+          <option value="jp">Japon</option>
+          <option value="kr">Corée du Sud</option>
+        </optgroup>
+
+        <optgroup label="Amériques">
+          <option value="us">États-Unis</option>
+          <option value="ca">Canada</option>
+          <option value="br">Brésil</option>
+          <option value="mx">Mexique</option>
+        </optgroup>
+      </select>
+
+      <label>Téléphone :</label>
+      <input type="tel" id="telephone" required placeholder="+33 6 12 34 56 78" />
+
+      <label>Adresse de départ :</label>
+      <input type="text" id="start" required placeholder="Ex : Gare de Lyon, Paris" />
+
+      <label>Adresse d’arrivée :</label>
+      <input type="text" id="end" required placeholder="Ex : Aéroport CDG Terminal 2" />
+
+      <label>Date et heure :</label>
+      <input type="datetime-local" id="date" required />
+
+      <label>Nombre de passagers :</label>
+      <select id="passagers" required>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+      </select>
+
+      <label>Message (optionnel) :</label>
+      <textarea id="message" placeholder="Message pour le chauffeur…"></textarea>
+
+      <div id="trip-info">
+        <div><strong>Distance :</strong> <span id="distance">—</span></div>
+        <div><strong>Durée :</strong> <span id="duree">—</span></div>
+        <div id="prix-affiche">— €</div>
+      </div>
+
+      <button type="button" id="calculate">🧭 Calculer le prix</button>
+
+      <h3>Paiement :</h3>
+      <div id="paypal-button-container"></div>
+      <button type="button" id="stripe-button" class="btn-stripe">
+        💳 Carte bancaire (Stripe)
+      </button>
+
+      <button type="button" id="reserver" class="btn-bord">
+        🚖 Réserver maintenant
+      </button>
+
+    </form>
+  </div>
+
+  <div id="map"></div>
+
+</section>
+</section>
+
+<!-- === AVANTAGES PREMIUM === -->
+<section id="avantages">
+  <h2>Pourquoi choisir Premium VTC Île-de-France ?</h2>
+
+  <div class="avantages-container">
+    <div class="avantage-box">
+      <span>🚘</span>
+      <h3>Chauffeurs certifiés</h3>
+      <p>Professionnels expérimentés, courtois et ponctuels.</p>
+    </div>
+
+    <div class="avantage-box">
+      <span>💳</span>
+      <h3>Paiement sécurisé</h3>
+      <p>PayPal, CB Stripe, ou paiement à bord.</p>
+    </div>
+
+    <div class="avantage-box">
+      <span>⏱</span>
+      <h3>Disponible 24/7</h3>
+      <p>Réservation immédiate ou programmée.</p>
+    </div>
+
+    <div class="avantage-box">
+      <span>⭐</span>
+      <h3>Service premium</h3>
+      <p>Véhicules haut de gamme, confort et discrétion.</p>
+    </div>
+  </div>
+</section>
+
+<!-- === SERVICES PREMIUM === -->
+<section id="services-section">
+
+
+<!-- ================= SERVICES ================= -->
+<section id="services-section">
+  <h2>Nos services Premium</h2>
+
+  <div class="services-container">
+    <div class="service-box">
+      <span>✈️</span>
+      <h3>Transferts Aéroports</h3>
+      <p>Orly • CDG • Beauvais</p>
+    </div>
+
+    <div class="service-box">
+      <span>🚗</span>
+      <h3>Longues Distances</h3>
+      <p>Partout en France</p>
+    </div>
+
+    <div class="service-box">
+      <span>🕒</span>
+      <h3>Mise à disposition</h3>
+      <p>À l'heure ou à la journée</p>
+    </div>
+
+    <div class="service-box">
+      <span>💼</span>
+      <h3>Transferts professionnels</h3>
+      <p>RDV, hôtels, congrès, salons</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= VÉHICULES ================= -->
+<section id="vehicules">
+  <h2>Nos véhicules</h2>
+
+  <div class="vehicules-container">
+    <div class="vehicule-box">
+      <img src="assets/img/CHR-T.png" class="vehicule-img" />
+      <p>Eco & Confort</p>
+    </div>
+
+    <div class="vehicule-box">
+      <img src="assets/img/image3.png" class="vehicule-img" />
+      <p>Business & Luxe</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= VILLES ================= -->
+<section id="villes">
+  <h2>Villes proches</h2>
+  <ul>
+    <li>Paris</li><li>Évry</li><li>Corbeil-Essonnes</li>
+    <li>Bondoufle</li><li>Villabé</li><li>Lisses</li>
+    <li>Étiolles</li><li>Ris-Orangis</li><li>Savigny-sur-Orge</li>
+  </ul>
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <p>© 2025 Premium VTC Île-de-France — Tous droits réservés.</p>
+</footer>
+
+
+
+<!-- ================= JS LIBRARIES ================= -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/18.1.1/js/intlTelInput.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script src="https://www.paypal.com/sdk/js?client-id=AeQQmaBFb_v25ReUl5UVEoxmJYWeJ7hsGzyi2kF2yOdiMtqGxNpxydZClqnZ4uAJ3t9ETtbGdf6kCpoP&currency=EUR"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmZidnFyW3OQ6_WvVJUluXODV-pxnPdfg&libraries=places&callback=initMap"
+        async defer></script>
+
+<script src="assets/js/scripts.js"></script>
+
+</body>
+</html>
